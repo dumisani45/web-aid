@@ -1,0 +1,6 @@
+
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; color: #333; }
+header, footer { background: #222; color: white; padding: 1rem 2rem; }
+section { padding: 2rem; background: white; margin: 2rem auto; max-width: 800px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+a { color: #0077cc; text-decoration: none; }
+a:hover { text-decoration: underline; }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Todo App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .todo-app {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .todo-app input[type="text"] {
+      width: 75%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .todo-app button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+
+    .todo-list {
+      margin-top: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .todo-list li {
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .todo-list li.completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .todo-list button {
+      background: transparent;
+      border: none;
+      color: #d00;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WebAid Premium Dashboard</h1>
+    <nav><a href="index.html">Back to Free</a></nav>
+  </header>
+
+  <section>
+    <h2>Interactive Todo App</h2>
+    <p>Build a feature-rich Todo application with real-time features.</p>
+
+    <div class="todo-app">
+      <input type="text" id="todo-input" placeholder="Enter a new task..." />
+      <button onclick="addTodo()">Add</button>
+      <ul id="todo-list" class="todo-list"></ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 WebAid. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+
+    function addTodo() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const li = document.createElement('li');
+      li.textContent = text;
+
+      li.addEventListener('click', () => {
+        li.classList.toggle('completed');
+      });
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = '✕';
+      delBtn.onclick = () => li.remove();
+      li.appendChild(delBtn);
+
+      list.appendChild(li);
+      input.value = '';
+    }
+
+    input.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        addTodo();
+      }
+    });
+  </script>
+</body>
+</html>

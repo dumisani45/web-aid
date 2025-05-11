@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Confirmation | WebAid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h2 {
+      color: #0077cc;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0077cc;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      background-color: #005fa3;
+    }
+
+    .error {
+      color: red;
+      font-size: 1.2rem;
+    }
+
+    .success {
+      color: green;
+      font-size: 1.2rem;
+    }
+
+    button{
+    padding:10px;
+    border:aqua solid 6px;
+    border-radius:5px;
+    margin-bottom:40px;
+}
+
+  </style>
+</head>
+<body>
+  <h2>WebAid Premium Access</h2>
+  <p id="confirmation-status"></p>
+  <button class="btn" id="access-premium" style="display: none;" onclick="accessPremiumContent()">Go to Premium Dashboard</button>
+
+  <div id="error-message" class="error" style="display: none;">
+    Your payment is still being verified. Please wait for confirmation.
+  </div>
+
+  <script>
+    // Simulate checking premium status (In real cases, this would be handled by backend)
+    const isPremiumConfirmed = localStorage.getItem("isPremiumConfirmed");
+
+    if (isPremiumConfirmed === "true") {
+      document.getElementById("confirmation-status").textContent = "Your premium status has been confirmed! Click below to access your Premium Dashboard.";
+      document.getElementById("access-premium").style.display = "block";
+      document.getElementById("error-message").style.display = "none";
+    } else {
+      document.getElementById("confirmation-status").textContent = "Your payment proof is being reviewed. You will be notified once your account is upgraded to Premium.";
+      document.getElementById("error-message").style.display = "block";
+      document.getElementById("access-premium").style.display = "none";
+    }
+
+    function accessPremiumContent() {
+      // Redirect to the premium dashboard
+      window.location.href = "premium-dashboard.html";
+    }
+
+    // Simulate backend check every 5 seconds
+setInterval(() => {
+  fetch('/api/check-premium-status') // You build this endpoint
+    .then(res => res.json())
+    .then(data => {
+      if (data.isPremium) {
+        localStorage.setItem("isPremiumConfirmed", "true");
+        window.location.href = "premium-dashboard.html";
+      }
+    });
+}, 5000);
+
+  </script>
+
+<script>
+  const email = "webaid910@gmail.com"; // Replace with actual logged-in user's email
+
+  fetch(`http://localhost:3000/api/check-premium-status?email=${encodeURIComponent(email)}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.isPremium) {
+        localStorage.setItem("isPremiumConfirmed", "true");
+        window.location.href = "premium-dashboard.html";
+      }
+    })
+    .catch(err => {
+      console.error("Failed to verify premium status:", err);
+    });
+</script>
+ 
+</body>
+</html>

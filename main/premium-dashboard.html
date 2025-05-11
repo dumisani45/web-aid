@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Dashboard | WebAid</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+      <h1>WebAid Premium Dashboard</h1>
+      <nav>
+        <a href="index.html">Back to Free</a>
+      </nav>
+    </header>
+  
+    <section>
+      <h3>Premium Tutorials</h3>
+      <p>As a premium user, you now have access to exclusive tutorials. Start learning right away:</p>
+      <ul>
+        <li><a href="advanced-javascript.html">Advanced JavaScript Tutorial</a></li>
+        <li><a href="nodejs-backend-exercises.html">Backend Development with Node.js</a></li>
+        <li><a href="advanced-react-challenges.html">Interactive React Projects</a></li>
+        <li><a href="#">Web Security Essentials</a></li>
+      </ul>
+
+      <h3>Interactive Coding Exercises</h3>
+      <p>Test your skills with these interactive coding challenges:</p>
+      <ul>
+        <li><a href="advanced-javascript.html">JavaScript Algorithms</a></li>
+        <li><a href="frontend-challenges.html">Frontend Challenges</a></li>
+        <li><a href="nodejs-backend-exercises.html">Node.js Backend Exercises</a></li>
+        <li><a href="advanced-react-challenges.html">Advanced React Challenges</a></li>
+      </ul>
+
+      <h3>Exclusive WebAid Mini-Projects</h3>
+      <p>Enhance your coding skills by building these projects:</p>
+      <ul>
+        <li><a href="interactive-todo-app.html">Interactive Todo App</a></li>
+        <li><a href="real-time-chat-application.html">Real-Time Chat Application</a></li>
+        <li><a href="ecommerce-website.html">E-commerce Website</a></li>
+        <li><a href="code-samples.html">code samples</a></li>
+        <li><a href="premium-editor.html">premium-editor</a></li>
+      </ul>
+
+      <a href="#" class="btn" onclick="logout()">Logout</a>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 WebAid. All rights reserved.</p>
+    </footer>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+const hasAccess = params.get('access') === 'true';
+const userData = JSON.parse(localStorage.getItem('userAccount'));
+const isPremium = localStorage.getItem('isPremium') === 'true';
+
+// If the user doesn't have access and isn't marked as premium, block access
+if (!hasAccess && (!userData || !isPremium)) {
+  alert("You are not authorized to access this page.");
+  window.location.href = "index.html";
+}
+
+
+    function logout() {
+      localStorage.removeItem('userAccount');
+      localStorage.removeItem('isPremium');
+      window.location.href = "index.html";
+    }
+    </script>
+</body>
+</html>

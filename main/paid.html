@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebAid Premium</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.premium-intro h2 {
+  color: #0077cc;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.premium-features h3,
+.subscription h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+ul li, ol li {
+  margin-bottom: 0.5rem;
+}
+
+.subscription strong {
+  color: #0077cc;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background-color: #0077cc;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #005fa3;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #222;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+/* Exchange Rate Table */
+.exchange-rate-table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.exchange-rate-table th, .exchange-rate-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.exchange-rate-table th {
+  background-color: #0077cc;
+  color: #fff;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+
+  section {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .premium-intro h2 {
+    font-size: 1.75rem;
+  }
+
+  .premium-features h3, .subscription h3 {
+    font-size: 1.25rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WebAid Premium</h1>
+    <nav>
+      <a href="index.html">Back to Free</a>
+    </nav>
+  </header>
+
+  <section class="premium-intro">
+    <h2>Upgrade to WebAid Premium</h2>
+    <p>Take your web development skills to the next level with guided video lessons, backend coding, full projects, and more.</p>
+  </section>
+
+  <section class="premium-features">
+    <h3>Included in Premium:</h3>
+    <ul>
+      <li>Video tutorials for each topic</li>
+      <li>Downloadable and editable code samples</li>
+      <li>Learn backend development (PHP, Node.js, etc.)</li>
+      <li>Advanced editor with syntax highlighting and tab support</li>
+      <li>Mini projects + interactive exercises</li>
+      <li>Priority support</li>
+    </ul>
+  </section>
+
+  <section class="subscription">
+    <h3>Get Full Access Now</h3>
+    <strong>Send To +260774146018 And MTN +260966630587</strong>
+    <p>Only <strong>15,000 ZMW</strong> per month.</p>
+    <p>Pay via Airtel Mobile Money on Flutterwave</p>
+
+    <label for="country">Select your country/region:</label>
+    <select id="country" onchange="showPaymentInstructions()">
+      <option value="">-- Choose Country/Region --</option>
+      
+      <!-- Africa -->
+      <optgroup label="Africa">
+        <option value="uganda-airtel">Uganda (Airtel)</option>
+        <option value="uganda-mtn">Uganda (MTN)</option>
+        <option value="kenya-mpesa">Kenya (M-Pesa)</option>
+        <option value="nigeria-flutterwave">Nigeria</option>
+        <option value="southafrica">South Africa</option>
+        <option value="ghana">Ghana</option>
+      </optgroup>
+
+      <!-- North America -->
+      <optgroup label="North America">
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+      </optgroup>
+
+      <!-- Europe -->
+      <optgroup label="Europe">
+        <option value="uk">United Kingdom</option>
+        <option value="germany">Germany</option>
+        <option value="france">France</option>
+      </optgroup>
+
+      <!-- Asia -->
+      <optgroup label="Asia">
+        <option value="india">India</option>
+        <option value="pakistan">Pakistan</option>
+        <option value="indonesia">Indonesia</option>
+      </optgroup>
+    </select>
+
+    <div id="payment-info" style="margin-top: 1rem;"></div>
+
+    
+    <a href="webaid_payment_proof_page.html" class="btn">I Have Paid – Activate My Account</a>
+  </section>
+
+  <!-- Exchange Rate Table -->
+  <section>
+    <h3>Exchange Rate Table</h3>
+    <table class="exchange-rate-table">
+      <thead>
+        <tr>
+          <th>Country/Region</th>
+          <th>Currency</th>
+          <th>Exchange Rate (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Uganda</td>
+          <td>UGX</td>
+          <td>1 USD = 3700 UGX</td>
+        </tr>
+        <tr>
+          <td>Kenya</td>
+          <td>KES</td>
+          <td>1 USD = 115 KES</td>
+        </tr>
+        <tr>
+          <td>South Africa</td>
+          <td>ZAR</td>
+          <td>1 USD = 18 ZAR</td>
+        </tr>
+        <tr>
+          <td>USA</td>
+          <td>USD</td>
+          <td>1 USD = 1 USD</td>
+        </tr>
+
+        <tr>
+          <td>ZAMBIA</td>
+          <td>ZMW</td>
+          <td>1 USD = 26.31 ZMW</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 WebAid. Premium Access Page.</p>
+  </footer>
+
+  <script>
+    function showPaymentInstructions() {
+      const infoDiv = document.getElementById("payment-info");
+      const country = document.getElementById("country").value;
+      let instructions = "";
+
+      switch (country) {
+        case "uganda-airtel":
+          instructions = `You can make your payment using Airtel Uganda. Send the payment to the number +260774146018.`;
+          break;
+        case "kenya-mpesa":
+          instructions = `To make your payment, use M-Pesa Kenya. Send the payment to +260966630587.`;
+          break;
+        case "nigeria-flutterwave":
+        case "ghana":
+        case "southafrica":
+        case "india":
+        case "usa":
+        case "uk":
+        case "canada":
+        case "germany":
+        case "france":
+        case "pakistan":
+        case "indonesia":
+          instructions = `You can pay securely via <strong>Flutterwave</strong> using your local payment methods, card, or bank transfer.`;
+          break;
+        default:
+          instructions = "";
+      }
+
+      infoDiv.innerHTML = instructions;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebAid - Learn Web Development</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header, footer {
+      background: #333;
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 2rem;
+      text-align: center;
+      background: #0077cc;
+      color: white;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #fff;
+      color: #0077cc;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #e0e0e0;
+    }
+
+    .features, .editor, .upgrade, .notes {
+      padding: 2rem;
+      background: #fff;
+      margin: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .editors {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .lesson {
+  background: #fff;
+  margin: 1rem;
+  padding: 1.5rem;
+  border-left: 4px solid #0077cc;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.lesson h3 {
+  margin-bottom: 0.5rem;
+}
+.lesson pre {
+  background: #f8f8f8;
+  padding: 1rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+  border-left: 4px solid #ccc;
+}
+.lesson ul {
+  padding-left: 1.5rem;
+}
+
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      font-family: monospace;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+      transition: font-size 0.3s;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      margin-top: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .toggle-buttons {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    pre {
+      background: #f0f0f0;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 4px solid #0077cc;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-info span {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>WebAid</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Editor</a>
+      <a href="paid.html">Premium</a>
+    </nav>
+    <!-- Add profile image slot -->
+    <div id="profile-img" style="display:none; margin-left: auto;">
+      <img id="profile" src="" alt="Profile Image" style="border-radius: 50%; width: 40px; height: 40px; object-fit: cover;" />
+    </div>
+  </header>
+  
+
+  <section class="hero">
+    <h2>Start Web Development Today, the Easy Way!</h2>
+    <p>Free tools, notes, and examples to get you going fast.</p>
+    <a href="#editor" class="btn">Try the Code Editor</a>
+  </section>
+
+  <section class="features">
+    <h3>What You Get for Free:</h3>
+    <ul>
+      <li>Live HTML/CSS/JS Editor</li>
+      <li>Summarized Notes After Each Topic</li>
+      <li>Theme and Font Size Toggle</li>
+      <li>Linked Topic Pages</li>
+    </ul>
+  </section>
+
+  <section id="editor" class="editor">
+    <h3>Try the Live Editor:</h3>
+    <div class="toggle-buttons">
+      <button class="btn" onclick="toggleTheme()">Toggle Theme</button>
+      <button class="btn" onclick="toggleFontSize()">Toggle Font Size</button>
+      <button class="btn" onclick="runCode()">Run</button>
+    </div>
+    <div class="editors">
+      <textarea id="html" placeholder="HTML Code Here"></textarea>
+      <textarea id="css" placeholder="CSS Code Here"></textarea>
+      <textarea id="js" placeholder="JavaScript Code Here"></textarea>
+    </div>
+    <iframe id="output"></iframe>
+  </section>
+
+  <section class="lesson">
+    <h3>Introduction to HTML</h3>
+    <p>HTML (HyperText Markup Language) is the foundation of web development. It is used to structure content on the web by defining the elements of a web page. HTML doesn't define the appearance or behavior of elements—that's the role of CSS and JavaScript. HTML tells the browser what type of content to display and how it should be structured.</p>
+    <article>
+      <p>HTML, or HyperText Markup Language, forms the skeleton of any website. Think of HTML as the language through which we communicate with the web. While HTML tells the browser what to display, it doesn't make decisions on how to style or add interactivity to the content. That’s where CSS (Cascading Style Sheets) and JavaScript come in.</p>
+      <p>To start learning HTML, you need to understand the concept of "tags." Tags are special keywords that define the structure and content of a page. Each HTML element typically consists of an opening tag, some content, and a closing tag. For example, the text inside a paragraph is enclosed in the <code>&lt;p&gt;</code> tag. An HTML document consists of elements nested within each other.</p>
+      <p>Here's a basic example:</p>
+      <pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;My First Web Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Welcome to My Website&lt;/h1&gt;
+      &lt;p&gt;This is my first web page.&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+      </pre>
+      <p>In this example:</p>
+      <ul>
+        <li><strong>&lt;html&gt;</strong>: Marks the beginning and end of an HTML document.</li>
+        <li><strong>&lt;head&gt;</strong>: Contains meta-information about the document, such as the title that appears in the browser tab.</li>
+        <li><strong>&lt;body&gt;</strong>: Contains all the content that is visible on the page, such as headings and paragraphs.</li>
+        <li><strong>&lt;h1&gt;</strong>: Represents a top-level heading.</li>
+        <li><strong>&lt;p&gt;</strong>: Represents a paragraph of text.</li>
+      </ul>
+      <p>HTML is constantly evolving, and the latest version is HTML5, which introduced several new features, including multimedia support, improved forms, and semantic elements that make web content more accessible and meaningful.</p>
+      <p>HTML's role in web development is to provide structure. It gives developers a framework for organizing content in a logical, hierarchical manner. However, HTML by itself cannot control the appearance of elements. To style the page, you would use CSS (Cascading Style Sheets). CSS is responsible for setting colors, fonts, margins, and positioning of the content on a page. JavaScript, on the other hand, adds interactivity to a page, such as enabling form validation, animations, or even interactive games.</p>
+    </article>
+  </section>
+  
+  
+  <section class="lesson">
+    <h3>Basic HTML Structure</h3>
+    <p>Every HTML document follows a basic structure that ensures a proper layout for the content. Understanding this structure is crucial for building organized and functional web pages. The structure of an HTML document typically contains a DOCTYPE declaration, the HTML root element, the head element, and the body element.</p>
+    <article>
+      <p>The basic HTML structure can be broken down into the following components:</p>
+      <ul>
+        <li><strong>&lt;!DOCTYPE html&gt;</strong>: This declaration tells the browser that the document is written in HTML5. It's important because it ensures that the page is rendered in the correct mode by modern browsers.</li>
+        <li><strong>&lt;html&gt;</strong>: The root element of the page. Everything inside this tag is considered part of the HTML document.</li>
+        <li><strong>&lt;head&gt;</strong>: Contains metadata, links to external files (like CSS and JavaScript), and other information that doesn't directly appear in the visible content of the page.</li>
+        <li><strong>&lt;body&gt;</strong>: This is where all the visible content of the page goes—texts, images, links, forms, etc.</li>
+      </ul>
+      <p>The head section typically includes:</p>
+      <ul>
+        <li><strong>&lt;meta&gt;</strong>: Used to define metadata about the HTML document, such as character encoding or page description for search engines.</li>
+        <li><strong>&lt;title&gt;</strong>: Defines the title of the webpage, which appears in the browser’s tab.</li>
+        <li><strong>&lt;link&gt;</strong>: Links external stylesheets to the document.</li>
+        <li><strong>&lt;script&gt;</strong>: Links or includes JavaScript code that enhances the interactivity of the webpage.</li>
+      </ul>
+      <p>Here’s an example of a basic HTML structure:</p>
+      <pre>
+  &lt;!DOCTYPE html&gt;
+  &lt;html lang="en"&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      &lt;title&gt;My First Web Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello, World!&lt;/h1&gt;
+      &lt;p&gt;This is my first website built using HTML.&lt;/p&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+      </pre>
+      <p>In this structure:</p>
+      <ul>
+        <li><strong>&lt;meta charset="UTF-8"&gt;</strong>: Specifies the character encoding used for the document.</li>
+        <li><strong>&lt;meta name="viewport"&gt;</strong>: Defines how the page should be displayed on different screen sizes (important for mobile responsiveness).</li>
+        <li><strong>&lt;h1&gt;</strong>: This is the main heading of the page, and it's typically the most important part of your content.</li>
+        <li><strong>&lt;p&gt;</strong>: Paragraph text. Here, we are simply introducing the web page.</li>
+      </ul>
+      <p>It's essential to understand the significance of the <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> sections. The <code>&lt;head&gt;</code> contains everything that is used to control the document's settings, such as metadata, links to CSS files, and scripts. The <code>&lt;body&gt;</code> is where all your actual content that users interact with will be placed.</p>
+      <p>With this structure in mind, you can now start building more complex web pages by adding additional elements and more content inside the <code>&lt;body&gt;</code> section. Keep in mind that HTML forms the skeleton of your webpage, and how you organize your HTML structure determines how well your webpage functions and how easily it can be styled and made interactive with CSS and JavaScript.</p>
+    </article>
+  </section>
+  
+  
+  <section class="lesson">
+    <h3>HTML Elements</h3>
+    <p>HTML elements are the basic building blocks of HTML. Each element is typically enclosed in opening and closing tags, with some content in between. These elements can also have attributes, which provide additional information about the element's behavior or styling.</p>
+    <article>
+      <p>HTML elements are essential for marking up the content of a webpage. An element consists of the opening tag, content, and closing tag. For example:</p>
+      <pre>
+  &lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+      </pre>
+      <p>In this case:</p>
+      <ul>
+        <li><strong>&lt;p&gt;</strong>: Represents the paragraph element.</li>
+        <li><strong>&lt;/p&gt;</strong>: This is the closing tag for the paragraph.</li>
+      </ul>
+      <p>Each HTML element is used to define specific parts of the webpage. For example:</p>
+      <ul>
+        <li><strong>&lt;h1&gt;</strong> to <strong>&lt;h6&gt;</strong>: These tags represent different levels of headings, from the most important (<code>&lt;h1&gt;</code>) to the least important (<code>&lt;h6&gt;</code>).</li>
+        <li><strong>&lt;a&gt;</strong>: The anchor element, used for creating hyperlinks.</li>
+        <li><strong>&lt;img&gt;</strong>: The image element, used for embedding images into the page.</li>
+        <li><strong>&lt;ul&gt;</strong>: Unordered list element, used to create lists with bullet points.</li>
+        <li><strong>&lt;ol&gt;</strong>: Ordered list element, used to create numbered lists.</li>
+        <li><strong>&lt;li&gt;</strong>: List item element, used inside both ordered and unordered lists.</li>
+      </ul>
+      <p>HTML elements can also include attributes. Attributes provide additional information about an element. For example, the <code>&lt;a&gt;</code> element has an <code>href</code> attribute that specifies the URL the link should navigate to:</p>
+      <pre>
+  &lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;
+      </pre>
+      <p>Attributes are always written within the opening tag, and they are typically in the form of a name-value pair (like <code>href="https://www.example.com"</code>). Not all elements have attributes, but many do, and they are essential for adding functionality or style to your elements.</p>
+      <p>Understanding the role of elements and attributes will allow you to create structured, meaningful HTML documents. Every piece of content on the page, from text and links to images and forms, is defined using HTML elements.</p>
+    </article>
+  </section>
+  
+  
+  <section class="lesson">
+    <h3>HTML Syntax</h3>
+    <p>HTML tags are written using angle brackets. Some elements are self-closing. Attributes provide extra information.</p>
+    <pre>
+  &lt;img src="image.jpg" alt="A sample image" /&gt;
+  &lt;a href="https://example.com"&gt;Visit&lt;/a&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Headings</h3>
+    <p>HTML provides 6 levels of headings, from &lt;h1&gt; (most important) to &lt;h6&gt; (least important).</p>
+    <pre>
+  &lt;h1&gt;Main Title&lt;/h1&gt;
+  &lt;h2&gt;Subtitle&lt;/h2&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Links</h3>
+    <p>Links are created using the &lt;a&gt; tag with the href attribute to point to the destination.</p>
+    <pre>
+  &lt;a href="https://example.com"&gt;Click Here&lt;/a&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Images</h3>
+    <p>Use the &lt;img&gt; tag to display images. Always include the alt attribute for accessibility.</p>
+    <pre>
+  &lt;img src="cat.jpg" alt="A cute cat"&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Lists</h3>
+    <p>HTML supports ordered lists (&lt;ol&gt;) and unordered lists (&lt;ul&gt;). Each item is wrapped in an &lt;li&gt; tag.</p>
+    <pre>
+  &lt;ul&gt;
+    &lt;li&gt;Apple&lt;/li&gt;
+    &lt;li&gt;Banana&lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;ol&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;Second&lt;/li&gt;
+  &lt;/ol&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Tables</h3>
+    <p>Tables display data in rows and columns using &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, and &lt;td&gt; tags.</p>
+    <pre>
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Alice&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Semantic Elements</h3>
+    <p>Semantic HTML uses tags that describe their meaning, making code more readable and accessible.</p>
+    <pre>
+  &lt;header&gt;&lt;/header&gt;
+  &lt;nav&gt;&lt;/nav&gt;
+  &lt;article&gt;&lt;/article&gt;
+  &lt;footer&gt;&lt;/footer&gt;
+    </pre>
+  </section>
+
+  <section class="lesson">
+    <h3>Semantic Meaning</h3>
+    <p>Semantic elements give meaning to web content. They help search engines and screen readers understand the structure.</p>
+    <pre>
+  &lt;section&gt;Main section content&lt;/section&gt;
+  &lt;aside&gt;Side info like ads or links&lt;/aside&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Forms</h3>
+    <p>HTML forms collect user input using fields like text, checkboxes, radios, and more.</p>
+    <pre>
+  &lt;form action="/submit" method="post"&gt;
+    &lt;input type="text" name="username"&gt;
+    &lt;input type="submit" value="Send"&gt;
+  &lt;/form&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Form Validation</h3>
+    <p>HTML provides built-in validation like required fields, patterns, and input types.</p>
+    <pre>
+  &lt;input type="email" required&gt;
+  &lt;input type="text" pattern="[A-Za-z]{3,}" title="Min 3 letters"&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Audio and Video</h3>
+    <p>Use the &lt;audio&gt; and &lt;video&gt; tags to embed media. Include controls for playback.</p>
+    <pre>
+  &lt;audio controls&gt;
+    &lt;source src="music.mp3" type="audio/mpeg"&gt;
+  &lt;/audio&gt;
+  
+  &lt;video controls width="320"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;/video&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Canvas</h3>
+    <p>&lt;canvas&gt; is used for rendering graphics with JavaScript — like games or drawings.</p>
+    <pre>
+  &lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+  
+  &lt;script&gt;
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(10, 10, 150, 75);
+  &lt;/script&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>SVG (Scalable Vector Graphics)</h3>
+    <p>SVG defines graphics using XML. It's ideal for resolution-independent images like logos.</p>
+    <pre>
+  &lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /&gt;
+  &lt;/svg&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Microformats</h3>
+    <p>Microformats use HTML classes and attributes to describe metadata, like people or events, in a machine-readable way.</p>
+    <pre>
+  &lt;div class="h-card"&gt;
+    &lt;span class="p-name"&gt;Jane Doe&lt;/span&gt;
+    &lt;a class="u-url" href="http://janedoe.com"&gt;Website&lt;/a&gt;
+  &lt;/div&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Metadata</h3>
+    <p>Metadata provides info about the document — used by browsers, search engines, and social media.</p>
+    <pre>
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="description" content="Learn HTML for free"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>Accessibility Basics</h3>
+    <p>Accessible HTML helps users with disabilities navigate content using screen readers or keyboards.</p>
+    <pre>
+  &lt;img src="cat.jpg" alt="A fluffy grey cat lounging" /&gt;
+  &lt;button aria-label="Close"&gt;X&lt;/button&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>ARIA Attributes</h3>
+    <p>ARIA (Accessible Rich Internet Applications) attributes describe elements for assistive tech.</p>
+    <pre>
+  &lt;div role="navigation" aria-label="Main menu"&gt;
+    &lt;button aria-expanded="false"&gt;Toggle Menu&lt;/button&gt;
+  &lt;/div&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>HTML Best Practices</h3>
+    <p>Write clean, semantic, and accessible HTML. Use proper indentation, alt attributes, and meaningful tags.</p>
+    <ul>
+      <li>Use semantic elements</li>
+      <li>Include alt text for images</li>
+      <li>Validate your HTML</li>
+    </ul>
+  </section>
+  
+  <section class="lesson">
+    <h3>HTML Tools</h3>
+    <p>Use tools to test and improve your HTML:</p>
+    <ul>
+      <li><a href="https://validator.w3.org" target="_blank">W3C Validator</a></li>
+      <li><a href="https://codepen.io" target="_blank">CodePen</a></li>
+      <li><a href="https://web.dev" target="_blank">Google web.dev</a></li>
+    </ul>
+  </section>
+  
+  <section class="lesson">
+    <h3>Web Components</h3>
+    <p>Web components are reusable custom elements using Shadow DOM and JavaScript.</p>
+    <pre>
+  &lt;template id="my-component"&gt;
+    &lt;style&gt; p { color: blue; } &lt;/style&gt;
+    &lt;p&gt;Hello Web Component!&lt;/p&gt;
+  &lt;/template&gt;
+    </pre>
+  </section>
+  
+  <section class="lesson">
+    <h3>HTML5 APIs</h3>
+    <p>HTML5 introduced APIs for geolocation, drag & drop, offline storage, and more.</p>
+    <pre>
+  &lt;script&gt;
+  navigator.geolocation.getCurrentPosition(function(pos) {
+    console.log(pos.coords.latitude, pos.coords.longitude);
+  });
+  &lt;/script&gt;
+    </pre>
+  </section>
+  
+  
+  <section class="upgrade">
+    <h3>Want More?</h3>
+    <p>Get video tutorials, server-side training, and full project builds.</p>
+    <a href="paid.html" class="btn">Upgrade Now</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 WebAid. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function runCode() {
+      const html = document.getElementById("html").value;
+      const css = `<style>${document.getElementById("css").value}</style>`;
+      const js = `<script>${document.getElementById("js").value}<\/script>`;
+      const output = document.getElementById("output");
+
+      const fullCode = html + css + js;
+      output.srcdoc = fullCode;
+    }
+
+    let isDark = false;
+    function toggleTheme() {
+      isDark = !isDark;
+      document.body.style.backgroundColor = isDark ? "#121212" : "#f4f4f4";
+      document.body.style.color = isDark ? "#f4f4f4" : "#333";
+
+      const headers = document.querySelectorAll("header, footer");
+      headers.forEach(el => el.style.backgroundColor = isDark ? "#000" : "#333");
+
+      const features = document.querySelectorAll(".features, .editor, .upgrade, .notes");
+      features.forEach(el => el.style.backgroundColor = isDark ? "#1e1e1e" : "#fff");
+    }
+
+    let largeFont = false;
+    function toggleFontSize() {
+      largeFont = !largeFont;
+      const textareas = document.querySelectorAll("textarea");
+      textareas.forEach(area => {
+        area.style.fontSize = largeFont ? "18px" : "14px";
+      });
+    }
+
+    // Assuming you're using some method to upload the image and get the image URL
+function signupUser() {
+  // Simulate the signup process
+  let profileImageUrl = "path/to/profile.jpg"; // Example image URL
+  
+  // Store it in sessionStorage or a cookie
+  sessionStorage.setItem('profileImage', profileImageUrl);
+
+  // Redirect to the index page
+  window.location.href = "index.html";
+}
+
+
+window.onload = function() {
+  // Check if there's a profile image stored in sessionStorage
+  const profileImageUrl = sessionStorage.getItem('profileImage');
+  
+  if (profileImageUrl) {
+    // Show profile image in the header
+    document.getElementById('profile-img').style.display = 'block';
+    document.getElementById('profile').src = profileImageUrl;
+  }
+}
+  </script>
+</body>
+</html>

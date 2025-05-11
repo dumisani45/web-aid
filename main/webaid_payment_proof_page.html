@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebAid Premium</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.5rem; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { text-decoration: underline; }
+    section {
+      padding: 2rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #0077cc;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { background-color: #005fa3; }
+    input[type="text"], input[type="email"], input[type="file"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #222;
+      color: #fff;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WebAid Premium</h1>
+    <nav>
+      <a href="index.html">Back to Free</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Get Full Access Now</h2>
+    <p><strong>Send payment to:</strong></p>
+    <ul>
+      <li>Airtel: <strong>+260774146018</strong></li>
+      <li>MTN: <strong>+260966630587</strong></li>
+    </ul>
+    <p>After payment, click the button below and submit proof of payment.</p>
+
+    <button onclick="document.getElementById('proof-form').style.display='block'" class="btn">
+      I Have Paid – Activate My Account
+    </button>
+
+    <form id="proof-form" style="display:none; margin-top: 2rem;" 
+          action="https://formspree.io/f/mldblqll" method="POST" enctype="multipart/form-data">
+      <h3>Submit Your Payment Proof</h3>
+
+      <label for="name">Full Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" name="_replyto" required>
+
+      <label for="proof">transaction ID:</label>
+      <input type="text">
+
+      <button type="submit" class="btn">Send Payment Proof</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 WebAid. All rights reserved.</p>
+  </footer>
+</body>
+</html>

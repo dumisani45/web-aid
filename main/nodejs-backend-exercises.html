@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Node.js Backend Exercises</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .api-response {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #eee;
+      font-family: monospace;
+      border-left: 4px solid #0077cc;
+    }
+    button {
+      margin: 1rem auto;
+      display: block;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #0077cc;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>WebAid Premium Dashboard</h1><nav><a href="index.html">Back to Free</a></nav></header>
+  <section>
+    <h2>Node.js API Simulation</h2>
+    <p>This simulates a backend response to test your understanding of APIs.</p>
+    <button onclick="fetchData()">Simulate API Call</button>
+    <div id="apiResponse" class="api-response">Response will appear here...</div>
+  </section>
+  <footer><p>&copy; 2025 WebAid. All rights reserved.</p></footer>
+  <script>
+    function fetchData() {
+      const mockData = {
+        status: "success",
+        user: "John Doe",
+        role: "admin"
+      };
+      document.getElementById("apiResponse").textContent = JSON.stringify(mockData, null, 2);
+    }
+  </script>
+</body>
+</html>

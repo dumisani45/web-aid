@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced React Challenges</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    #counter {
+      margin: 2rem auto;
+      text-align: center;
+    }
+    #counter button {
+      margin: 0 10px;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+    }
+    #count {
+      font-size: 2rem;
+      margin: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>WebAid Premium Dashboard</h1><nav><a href="index.html">Back to Free</a></nav></header>
+  <section>
+    <h2>React Challenge (Vanilla Simulation)</h2>
+    <p>Try to recreate this counter using React and component state.</p>
+    <div id="counter">
+      <p id="count">0</p>
+      <button onclick="changeCount(-1)">-</button>
+      <button onclick="changeCount(1)">+</button>
+    </div>
+  </section>
+  <footer><p>&copy; 2025 WebAid. All rights reserved.</p></footer>
+  <script>
+    let count = 0;
+    function changeCount(val) {
+      count += val;
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+</body>
+</html>

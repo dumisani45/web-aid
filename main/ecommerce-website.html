@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-commerce Website</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .product {
+      display: flex;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .product img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-info h3 {
+      margin-bottom: 0.5rem;
+    }
+    .product-info button {
+      background: #0077cc;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>WebAid Premium Dashboard</h1><nav><a href="index.html">Back to Free</a></nav></header>
+  <section>
+    <h2>E-commerce Product Card</h2>
+    <p>This is a demo of a single product component.</p>
+    <div class="product">
+      <img src="IMG-20250511-WA0000.jpg" alt="Product" />
+      <div class="product-info">
+        <h3>Web Design Course</h3>
+        <p>Master HTML, CSS & JS. Lifetime access.</p>
+        <strong>$29.99</strong><br/>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+  <footer><p>&copy; 2025 WebAid. All rights reserved.</p></footer>
+</body>
+</html>
